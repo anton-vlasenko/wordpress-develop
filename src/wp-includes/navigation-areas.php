@@ -239,9 +239,14 @@ function _parse_blocks_from_menu_items( $menu_items, $menu_items_by_parent_id ) 
 			),
 		);
 
-		$block['innerBlocks']  = isset( $menu_items_by_parent_id[ $menu_item->ID ] )
-			? _parse_blocks_from_menu_items( $menu_items_by_parent_id[ $menu_item->ID ], $menu_items_by_parent_id )
-			: array();
+		$block['innerBlocks'] = array();
+		if ( isset( $menu_items_by_parent_id[ $menu_item->ID ] ) ) {
+			$block['innerBlocks'] = _parse_blocks_from_menu_items(
+				$menu_items_by_parent_id[ $menu_item->ID ],
+				$menu_items_by_parent_id
+			);
+		}
+
 		$block['innerContent'] = array_map( 'serialize_block', $block['innerBlocks'] );
 
 		$blocks[] = $block;
