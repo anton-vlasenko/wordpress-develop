@@ -142,7 +142,7 @@ function _migrate_menu_to_navigation_post( $new_name, $new_theme, $old_theme ) {
  * @param string $location The menu location.
  * @return array Menu items for the location.
  */
-function _menu_items_at_location( $location ) {
+function _get_menu_items_at_location( $location ) {
 	if ( empty( $location ) ) {
 		return;
 	}
