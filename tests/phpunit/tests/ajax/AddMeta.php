@@ -42,7 +42,7 @@ class Tests_Ajax_AddMeta extends WP_Ajax_UnitTestCase {
 	/**
 	 * @ticket 43559
 	 *
-	 * @covers ::update_post_meta
+	 * @covers ::update_metadata_by_mid
 	 */
 	public function test_post_update_meta_empty_is_allowed_ajax() {
 		$p = self::factory()->post->create();
