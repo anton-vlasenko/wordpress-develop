@@ -1754,6 +1754,11 @@ class WP_Theme_JSON {
 			return $value;
 		}
 
+		// strncmp expects a string; it doesn't make sense to process the value further.
+		if ( null === $value ) {
+			return '';
+		}
+
 		// Convert custom CSS properties.
 		$prefix     = 'var:';
 		$prefix_len = strlen( $prefix );

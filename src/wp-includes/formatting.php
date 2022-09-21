@@ -4373,6 +4373,11 @@ function esc_url( $url, $protocols = null, $_context = 'display' ) {
 		return $url;
 	}
 
+	// It doesn't make sense to process the value further.
+	if ( null === $url ) {
+		return '';
+	}
+
 	$url = str_replace( ' ', '%20', ltrim( $url ) );
 	$url = preg_replace( '|[^a-z0-9-~+_.?#=!&;,/:%@$\|*\'()\[\]\\x80-\\xff]|i', '', $url );
 
