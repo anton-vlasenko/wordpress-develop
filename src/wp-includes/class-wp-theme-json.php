@@ -1717,7 +1717,12 @@ class WP_Theme_JSON {
 	 * @return string|array Style property value.
 	 */
 	protected static function get_property_value( $styles, $path, $theme_json = null ) {
-		$value = _wp_array_get( $styles, $path );
+		$value = _wp_array_get( $styles, $path, '' );
+
+		// It doesn't make sense to process the value further.
+		if ( '' === $value ) {
+			return '';
+		}
 
 		/*
 		 * This converts references to a path to the value at that path
@@ -1752,11 +1757,6 @@ class WP_Theme_JSON {
 
 		if ( is_array( $value ) ) {
 			return $value;
-		}
-
-		// strncmp expects a string; it doesn't make sense to process the value further.
-		if ( null === $value ) {
-			return '';
 		}
 
 		// Convert custom CSS properties.
