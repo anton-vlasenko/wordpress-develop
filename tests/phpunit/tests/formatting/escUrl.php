@@ -332,7 +332,7 @@ EOT;
 	 *
 	 * @covers ::esc_url
 	 */
-	public function test_should_return_empty_string_if_the_url_is_null( $url ) {
+	public function test_should_return_empty_string_for_non_string_url_values( $url ) {
 		$this->setExpectedIncorrectUsage( 'esc_url' );
 		$result = esc_url( $url );
 		$this->assertSame( '', $result );
