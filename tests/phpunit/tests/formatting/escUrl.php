@@ -313,10 +313,28 @@ EOT;
 	}
 
 	/**
+	 * Data provider for test_should_return_empty_string_if_the_url_is_null().
+	 *
+	 * @return array
+	 */
+	public function data_should_return_empty_string_for_non_string_url_values() {
+		return array(
+			'null'    => array( null ),
+			'int'     => array( 0 ),
+			'array'   => array( array() ),
+			'float'   => array( 0.0 ),
+			'boolean' => array( false ),
+		);
+	}
+
+	/**
+	 * @dataProvider data_should_return_empty_string_for_non_string_url_values
+	 *
 	 * @covers ::esc_url
 	 */
-	public function test_should_return_empty_string_if_the_url_is_null() {
-		$result = esc_url( null );
+	public function test_should_return_empty_string_if_the_url_is_null( $url ) {
+		$this->setExpectedIncorrectUsage( 'esc_url' );
+		$result = esc_url( $url );
 		$this->assertSame( '', $result );
 	}
 }
