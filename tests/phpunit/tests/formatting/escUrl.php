@@ -312,4 +312,11 @@ EOT;
 		$this->assertSame( 'http://[::FFFF::127.0.0.1]/?foo%5Bbar%5D=baz', esc_url( 'http://[::FFFF::127.0.0.1]/?foo[bar]=baz' ) );
 	}
 
+	/**
+	 * @covers ::esc_url
+	 */
+	public function test_should_return_empty_string_if_the_url_is_null() {
+		$result = esc_url( null );
+		$this->assertSame( '', $result );
+	}
 }

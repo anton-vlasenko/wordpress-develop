@@ -4369,13 +4369,22 @@ function esc_sql( $data ) {
 function esc_url( $url, $protocols = null, $_context = 'display' ) {
 	$original_url = $url;
 
-	if ( '' === $url ) {
-		return $url;
+	if ( ! is_string( $url ) ) {
+		_doing_it_wrong(
+			__FUNCTION__,
+			sprintf(
+				/* translators: %s: The $url argument. */
+				__( 'The %s argument must be a string.' ),
+				'<code>$url</code>'
+			),
+			'6.1.0'
+		);
+
+		return '';
 	}
 
-	// It doesn't make sense to process the value further.
-	if ( null === $url ) {
-		return '';
+	if ( '' === $url ) {
+		return $url;
 	}
 
 	$url = str_replace( ' ', '%20', ltrim( $url ) );

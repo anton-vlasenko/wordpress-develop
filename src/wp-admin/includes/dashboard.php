@@ -649,6 +649,10 @@ function wp_dashboard_recent_drafts( $drafts = false ) {
 	$drafts = array_slice( $drafts, 0, 3 );
 	foreach ( $drafts as $draft ) {
 		$url   = get_edit_post_link( $draft->ID );
+		if ( null === $url ) {
+			$url = '';
+		}
+
 		$title = _draft_or_post_title( $draft->ID );
 
 		echo "<li>\n";
