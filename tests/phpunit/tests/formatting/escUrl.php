@@ -329,6 +329,7 @@ EOT;
 
 	/**
 	 * @dataProvider data_should_return_empty_string_for_non_string_url_values
+	 * @ticket       56620
 	 *
 	 * @covers ::esc_url
 	 */
