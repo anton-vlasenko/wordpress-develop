@@ -4706,7 +4706,7 @@ function register_admin_color_schemes() {
 	wp_admin_css_color(
 		'fresh',
 		_x( 'Default', 'admin color scheme' ),
-		false,
+		'',
 		array( '#1d2327', '#2c3338', '#2271b1', '#72aee6' ),
 		array(
 			'base'    => '#a7aaad',
