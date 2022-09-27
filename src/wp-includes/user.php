@@ -52,6 +52,17 @@ function wp_signon( $credentials = array(), $secure_cookie = '' ) {
 	}
 
 	/**
+	 * Initialize user_login and user_password values as
+	 * wp_authenticate expects strings.
+	 */
+	if ( ! array_key_exists( 'user_login', $credentials ) ) {
+		$credentials['user_login'] = '';
+	}
+	if ( ! array_key_exists( 'user_password', $credentials ) ) {
+		$credentials['user_password'] = '';
+	}
+
+	/**
 	 * Fires before the user is authenticated.
 	 *
 	 * The variables passed to the callbacks are passed by reference,
