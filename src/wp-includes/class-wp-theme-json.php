@@ -1721,7 +1721,7 @@ class WP_Theme_JSON {
 
 		// It doesn't make sense to process the value further.
 		if ( '' === $value ) {
-			return '';
+			return $value;
 		}
 
 		/*
