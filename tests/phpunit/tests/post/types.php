@@ -239,7 +239,7 @@ class Tests_Post_Types extends WP_UnitTestCase {
 		update_option( 'permalink_structure', '%postname%' );
 		register_post_type( 'foo', array( 'rewrite' => array( 'feeds' => false ) ) );
 		$this->assertFalse( $wp_rewrite->extra_permastructs['foo']['feed'] );
-		update_option( 'permalink_structure', $old_permastruct );
+		update_option( 'permalink_structure', '' );
 		_unregister_post_type( 'foo' );
 	}
 
